@@ -26,27 +26,27 @@ models arising from partitions of a set of I elements. Additionally, posterior p
 pairwise comparisons of interest.
 }
 \examples{
-Consider the following data:
-Group 1: 12,15,19,11
-Group 2: 4,7,9,3
-Group 3: 18,11,17
-Group 4: 22,24,23,29,27
+# Consider the following data:
+# Group 1: 12,15,19,11
+# Group 2: 4,7,9,3
+# Group 3: 18,11,17
+# Group 4: 22,24,23,29,27
 
-We first define our observation vector using these data.
+# We first define our observation vector using these data.
 ex.y <- c(12,13,19,11, 4,7,9,3, 18,11,17, 22,24,23,29,27)
 
-Next, we define the vector specifying the number per group.
+# Next, we define the vector specifying the number per group.
 ex.npg <- c(4,4,3,5)
 
-We are interested in obtaining the posterior pairwise equality probability for the means of groups 1 and 3.
-The posterior pairwise equality probability for the means of groups 3 and 4 is also of interest. We next define
-the matrix which specifies this. (Note: Should interest be in all pairwise equalities, do not provide an object to pairs)
+# We are interested in obtaining the posterior pairwise equality probability for the means of groups 1 and 3.
+# The posterior pairwise equality probability for the means of groups 3 and 4 is also of interest. We next define
+# the matrix which specifies this. (Note: Should interest be in all pairwise equalities, do not provide an object to pairs)
 ex.pairs <- matrix(c(1,3,3,4), nrow = 2, ncol = 2, byrow = TRUE)
 
-Feeding these objects into the function, we obtain the desired results. We specify "p.probs = TRUE" in order to obtain
-a table of posterior probabilities for all models defined by each partition. A restricted table displaying models with
-posterior probabilites larger than some cutoff, c, may be obtained by specifying "cutoff = c". The models fit are ANOVA type
-models, so we specify the link function accordingly.
+# Feeding these objects into the function, we obtain the desired results. We specify "p.probs = TRUE" in order to obtain
+# a table of posterior probabilities for all models defined by each partition. A restricted table displaying models with
+# posterior probabilites larger than some cutoff, c, may be obtained by specifying "cutoff = c". The models fit are ANOVA type
+# models, so we specify the link function accordingly.
 
 BayMC.composite(y = ex.y, npg = ex.npg, pairs = ex.pairs, p.probs = TRUE, family=gaussian(link = "identity")))
 }
