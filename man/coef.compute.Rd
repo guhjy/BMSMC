@@ -4,7 +4,7 @@
 \alias{coef.compute}
 \title{Model Coefficient Generator}
 \usage{
-\method{coef}{compute}(y, grpvec, pooling)
+\method{coef}{compute}(y, grpvec, pooling, ...)
 }
 \arguments{
 \item{y}{vector of data}

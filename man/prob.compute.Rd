@@ -4,7 +4,7 @@
 \alias{prob.compute}
 \title{Probability Generating Function}
 \usage{
-prob.compute(y, grpvec)
+prob.compute(y, grpvec, ...)
 }
 \arguments{
 \item{y}{vector of data}

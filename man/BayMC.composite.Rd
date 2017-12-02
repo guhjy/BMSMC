@@ -4,20 +4,49 @@
 \alias{BayMC.composite}
 \title{Composite Bayesian Multiple Comparisons Function}
 \usage{
-BayMC.composite(y, npg, pair, p.probs = FALSE)
+BayMC.composite(y, npg, pairs = NA, cutoff = NA, p.probs = FALSE, ...)
 }
 \arguments{
 \item{y}{vector of data}
 
 \item{npg}{vector describing the number of observations in each group}
 
-\item{pair}{vector of length two describing pair of interest}
+\item{pairs}{k by 2 matrix of k pairs of interest}
+
+\item{cutoff}{the cutoff value for display of model posterior probabilities}
 
 \item{p.probs}{Do you want a table of posterior probabilities for all generated models? Default is FALSE}
+
+\item{...}{Specification of the family and link function as in the glm procedure}
 }
 \description{
-This function performs the Baysian Model Selection approach to Multiple Comparisons Problems
+This function performs analyses as described in "Bayesian Multiple Comparisons and Model Selection" by Andrew A. Neath,
+Javier E. Flore, and Joseph E. Cavanaugh. Specifically, this function computes approximate posterior probabilities for all
+models arising from partitions of a set of I elements. Additionally, posterior pairwise probabilities are computed for
+pairwise comparisons of interest.
 }
 \examples{
-BayMC.composite()
+Consider the following data:
+Group 1: 12,15,19,11
+Group 2: 4,7,9,3
+Group 3: 18,11,17
+Group 4: 22,24,23,29,27
+
+We first define our observation vector using these data.
+ex.y <- c(12,13,19,11, 4,7,9,3, 18,11,17, 22,24,23,29,27)
+
+Next, we define the vector specifying the number per group.
+ex.npg <- c(4,4,3,5)
+
+We are interested in obtaining the posterior pairwise equality probability for the means of groups 1 and 3.
+The posterior pairwise equality probability for the means of groups 3 and 4 is also of interest. We next define
+the matrix which specifies this. (Note: Should interest be in all pairwise equalities, do not provide an object to pairs)
+ex.pairs <- matrix(c(1,3,3,4), nrow = 2, ncol = 2, byrow = TRUE)
+
+Feeding these objects into the function, we obtain the desired results. We specify "p.probs = TRUE" in order to obtain
+a table of posterior probabilities for all models defined by each partition. A restricted table displaying models with
+posterior probabilites larger than some cutoff, c, may be obtained by specifying "cutoff = c". The models fit are ANOVA type
+models, so we specify the link function accordingly.
+
+BayMC.composite(y = ex.y, npg = ex.npg, pairs = ex.pairs, p.probs = TRUE, family=gaussian(link = "identity")))
 }
