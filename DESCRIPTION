@@ -1,4 +1,4 @@
-Package: BMSMCR
+Package: BMSMC
 Title: Bayesian Multiple Comparisons and Model Selection
 Version: 0.0.0.9000
 Authors@R: person("Javier", "Flores", email = "javier-flores@uiowa.edu", role = c("aut", "cre"))
