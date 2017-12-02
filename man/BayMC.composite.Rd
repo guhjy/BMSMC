@@ -21,7 +21,7 @@ BayMC.composite(y, npg, pairs = NA, cutoff = NA, p.probs = FALSE, ...)
 }
 \description{
 This function performs analyses as described in "Bayesian Multiple Comparisons and Model Selection" by Andrew A. Neath,
-Javier E. Flore, and Joseph E. Cavanaugh. Specifically, this function computes approximate posterior probabilities for all
+Javier E. Flores, and Joseph E. Cavanaugh. Specifically, this function computes approximate posterior probabilities for all
 models arising from partitions of a set of I elements. Additionally, posterior pairwise probabilities are computed for
 pairwise comparisons of interest.
 }
@@ -46,7 +46,7 @@ ex.pairs <- matrix(c(1,3,3,4), nrow = 2, ncol = 2, byrow = TRUE)
 # Feeding these objects into the function, we obtain the desired results. We specify "p.probs = TRUE" in order to obtain
 # a table of posterior probabilities for all models defined by each partition. A restricted table displaying models with
 # posterior probabilites larger than some cutoff, c, may be obtained by specifying "cutoff = c". The models fit are ANOVA type
-# models, so we specify the link function accordingly.
+# models, so we specify "family=gaussian(link = "identity")".
 
 BayMC.composite(y = ex.y, npg = ex.npg, pairs = ex.pairs, p.probs = TRUE, family=gaussian(link = "identity")))
 }
